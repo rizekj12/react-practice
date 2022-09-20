@@ -16,12 +16,21 @@ class Movies extends Component {
         this.setState(this.arrayItemRemovale(this.state.movies, movie))
     }
 
+    //another way to delete from a list using state
+    handleDelete = movie => {
+        const movies = this.state.movies.filter(m => m._id !== movie._id)
+        this.setState({ movies })
+    }
+
     render() {
+        const { length: moviesCount } = this.state.movies
+        if (moviesCount === 0)
+            return <p>There are no movies in the database.</p>
+
         return (
             <>
+                <p>Showing {moviesCount} Movies</p>
                 <h1>Movies component</h1>
-
-
                 <table className="table">
                     <thead>
                         <tr>
@@ -34,29 +43,21 @@ class Movies extends Component {
                     </thead>
                     <tbody>
                         {this.state.movies.map(movie => {
-
                             if (this.state.movies.length === 0) return <p>There are no movies</p>
-
                             return <tr key={movie._id}>
                                 <td>{movie.title}</td>
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
-                                <td><button onClick={() => this.deleteMovie(movie)} className="btn btn-danger">Delete</button></td>
+                                <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger">Delete</button></td>
+                                {/* <td><button onClick={() => this.deleteMovie(movie)} className="btn btn-danger">Delete</button></td> */}
                             </tr>
                         })}
                     </tbody>
                 </table>
-                {this.state.movies.length === 0 && 'no movies'}
             </>
         );
     }
-
- renderMovies(){
-    
- }
-
-
 }
 
 export default Movies;
