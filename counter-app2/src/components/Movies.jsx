@@ -14,7 +14,6 @@ class Movies extends Component {
 
     deleteMovie = movie => {
         this.setState(this.arrayItemRemovale(this.state.movies, movie))
-        console.log(this.state.movies)
     }
 
     render() {
@@ -46,9 +45,9 @@ class Movies extends Component {
                                 <td><button onClick={() => this.deleteMovie(movie)} className="btn btn-danger">Delete</button></td>
                             </tr>
                         })}
-                        {this.state.movies.length === 0 && 'no movies'}
                     </tbody>
                 </table>
+                {this.state.movies.length === 0 && 'no movies'}
             </>
         );
     }
