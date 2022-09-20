@@ -6,9 +6,15 @@ class Movies extends Component {
         movies: getMovies()
     }
 
+    arrayItemRemovale = (array, item) => {
+        let itemIndex = array.indexOf(item)
+        array.splice(itemIndex, 1)
+        return array
+    }
+
     deleteMovie = movie => {
-        this.setState(this.state.movies)
-        console.log(movie)
+        this.setState(this.arrayItemRemovale(this.state.movies, movie))
+        console.log(this.state.movies)
     }
 
     render() {
