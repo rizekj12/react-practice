@@ -21,6 +21,8 @@ class Movies extends Component {
         return (
             <>
                 <h1>Movies component</h1>
+
+
                 <table className="table">
                     <thead>
                         <tr>
@@ -32,20 +34,30 @@ class Movies extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.movies.map(movie => (
-                            <tr key={movie._id}>
+                        {this.state.movies.map(movie => {
+
+                            if (this.state.movies.length === 0) return <p>There are no movies</p>
+
+                            return <tr key={movie._id}>
                                 <td>{movie.title}</td>
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
                                 <td><button onClick={() => this.deleteMovie(movie)} className="btn btn-danger">Delete</button></td>
                             </tr>
-                        ))}
+                        })}
+                        {this.state.movies.length === 0 && 'no movies'}
                     </tbody>
                 </table>
             </>
         );
     }
+
+ renderMovies(){
+    
+ }
+
+
 }
 
 export default Movies;
