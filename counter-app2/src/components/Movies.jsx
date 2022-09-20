@@ -30,7 +30,6 @@ class Movies extends Component {
         return (
             <>
                 <p>Showing {moviesCount} Movies</p>
-                <h1>Movies component</h1>
                 <table className="table">
                     <thead>
                         <tr>
