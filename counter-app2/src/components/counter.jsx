@@ -18,10 +18,10 @@ class Counter extends Component {
 
     // do not update state directly use set state method 
 
-    handleIncrement = e => {
-        console.log(e)
-        this.setState({ count: this.state.count + 1 })
-    }
+    handleIncrement = e => this.setState({ count: this.state.count + 1 })
+
+    handleDecrement = e => this.setState({ count: this.state.count - 1 })
+    
 
     // doHandleIncremement = () => {
     //     this.handleIncrement({id: 1})
@@ -32,8 +32,9 @@ class Counter extends Component {
             <div>
                 <span className={this.setClass()}>{this.formatCount()}</span>
                 <button onClick={() => this.handleIncrement({ id: 1 })} className='btn btn-secondary btn-sm'>increment</button>
+                <button onClick={() => this.handleDecrement({ id: 1 })} className='btn btn-secondary btn-sm'>decrement</button>
                 {this.state.tags.length === 0 && 'please create new tag'}
-                {this.renderTags()}
+                {/* {this.renderTags()} */}
             </div>
         )
     }
