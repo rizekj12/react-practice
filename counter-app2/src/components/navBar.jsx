@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
 
-class NavBar extends Component {
+//stateless functional component
 
-    render() {
-        return (
-            <nav className="navbar navbar-light bg-light">
-                <span className="badge bg-pill bg-secondary m-2">{this.props.totalCounters}</span>
-            </nav>
-        );
-    }
+const NavBar = ({ totalCounters }) => {
+    return ( 
+        <>
+         <nav className="navbar navbar-light bg-light">
+                 <span className="badge bg-pill bg-secondary m-2">{totalCounters}</span>
+             </nav>           
+        </>
+     );
 }
 
 export default NavBar;
+
