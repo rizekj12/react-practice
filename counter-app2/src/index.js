@@ -5,13 +5,14 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Counters from './components/counters'
+import App from "./components/App"
+// import Counters from './components/counters'
 import 'font-awesome/css/font-awesome.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Counters />
+    <App />
   </React.StrictMode>
 );
 
