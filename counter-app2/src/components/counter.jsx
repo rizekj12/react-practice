@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
+        value: this.props.counter.value,
         tags: ["tag1", "tag2", "tag3"]
     }
 
@@ -18,9 +18,18 @@ class Counter extends Component {
 
     // do not update state directly use set state method 
 
-    handleIncrement = e => this.setState({ count: this.state.count + 1 })
+    handleIncrement = e => this.setState({ value: this.state.value + 1 })
 
-    handleDecrement = e => this.setState({ count: this.state.count - 1 })
+    handleDecrement = e => {
+        if(this.state.value < 0){
+            this.setState({ value: 0 })
+        }else{
+            this.setState({ value: this.state.value - 1 })  
+        }
+        
+    }
+
+   
     
 
     // doHandleIncremement = () => {
@@ -31,8 +40,9 @@ class Counter extends Component {
         return (
             <div>
                 <span className={this.setClass()}>{this.formatCount()}</span>
-                <button onClick={() => this.handleIncrement({ id: 1 })} className='btn btn-secondary btn-sm'>increment</button>
-                <button onClick={() => this.handleDecrement({ id: 1 })} className='btn btn-secondary btn-sm'>decrement</button>
+                <button onClick={() => this.handleIncrement({ id: 1 })} className='btn btn-secondary btn-sm m-2'>increment</button>
+                <button onClick={() => this.handleDecrement({ id: 1 })} className='btn btn-secondary btn-sm m-2'>decrement</button>
+                <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">Delete</button>
                 {this.state.tags.length === 0 && 'please create new tag'}
                 {/* {this.renderTags()} */}
             </div>
@@ -46,11 +56,11 @@ class Counter extends Component {
     }
 
     setClass() {
-        return this.state.count === 0 ? "badge bg-warning m-2" : "badge bg-primary m-2";
+        return this.state.value === 0 ? "badge bg-warning m-2" : "badge bg-primary m-2";
     }
 
     formatCount() {
-        const { count } = this.state
+        const { value: count } = this.state
         return count === 0 ? "Zero" : count
     }
 
