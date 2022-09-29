@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { regular} from '@fortawesome/fontawesome-svg-core/import.macro'
+import {faHeart} from '@fortawesome/free-regular-svg-icons'
+
+
+
+
 
 class Movies extends Component {
     state = {
@@ -37,6 +44,7 @@ class Movies extends Component {
                             <th scope="col">Genere</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Rate</th>
+                            <th scope="col">likes</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -48,6 +56,7 @@ class Movies extends Component {
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
+                                <td><FontAwesomeIcon icon={faHeart} /></td>
                                 <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger">Delete</button></td>
                                 {/* <td><button onClick={() => this.deleteMovie(movie)} className="btn btn-danger">Delete</button></td> */}
                             </tr>

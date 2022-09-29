@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Main from './components/Main'
 import 'font-awesome/css/font-awesome.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
